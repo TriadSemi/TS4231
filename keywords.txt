@@ -1,0 +1,27 @@
+#######################################
+# Syntax Coloring Map
+#######################################
+
+#######################################
+# Datatypes (KEYWORD1)
+#######################################
+
+TS4231	KEYWORD1
+
+#######################################
+# Methods and Functions (KEYWORD2)
+#######################################
+
+waitForLight	KEYWORD2
+goToSleep	KEYWORD2
+configDevice	KEYWORD2
+goToWatch	KEYWORD2
+
+######################################
+# Constants (LITERAL1)
+#######################################
+
+BUS_FAIL	LITERAL1
+VERIFY_FAIL	LITERAL1
+WATCH_FAIL	LITERAL1
+CONFIG_PASS	LITERAL1
