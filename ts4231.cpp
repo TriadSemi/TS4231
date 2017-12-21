@@ -39,6 +39,10 @@
 #include "ts4231.h"
 #include <Arduino.h>
 
+//IMPORTANT NOTE: If porting the TS4231 library code to a non-Arduino architecture,
+//be sure that the INPUT ports assigned to the E and D signals are configured as
+//floating inputs with NO pull-up or pull-down function.  Using a pull-up or
+//pull-down function on the inputs will cause the TS4231 to operate incorrectly.
 
 TS4231::TS4231(int device_E_pin, int device_D_pin) {
   configured = false;

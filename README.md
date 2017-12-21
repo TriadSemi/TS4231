@@ -18,7 +18,10 @@ Installation instructions:
 
 **** Next, set up your hardware and run the example application ************
 
-**** IMPORTANT NOTE BEFORE BEGINNING -- The TS4231 is a 3.3V device and must only be used with a 3.3V Arduino board.  Failure to do so will damage the TS4231.
+**** IMPORTANT NOTES BEFORE BEGINNING
+**** 1) The TS4231 is a 3.3V device and must only be used with a 3.3V Arduino board.  Failure to do so will damage the TS4231.
+**** 2) DO NOT add pull-up or pull-down resistors to the D and E signals.
+**** 3) DO NOT configure the Arduino INPUT ports that connect to the D and E signals with a pull-up or pull-down function.  They must be floating.
 
 1) First, install the TS4231 Arduino library by following the instructions here:
 

@@ -35,6 +35,11 @@
 #include <ts4231.h>
 
 #define light_timeout   500  //500ms is a placeholder as this number will be system dependent
+
+//IMPORTANT NOTE: If porting the TS4231 library code to a non-Arduino architecture,
+//be sure that the INPUT ports assigned to the E and D signals are configured as
+//floating inputs with NO pull-up or pull-down function.  Using a pull-up or
+//pull-down function on the inputs will cause the TS4231 to operate incorrectly.
 #define device1_E_pin   your_E_pin   //User must replace your_E_pin with their pin number (compile error will occur if no number defined)
 #define device1_D_pin   your_D_pin   //User must replace your_D_pin with their pin number (compile error will occur if no number defined)
 
