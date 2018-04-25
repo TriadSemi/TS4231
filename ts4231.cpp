@@ -39,6 +39,7 @@ uint8_t TS4231::ts_digitalRead(int pin) {
 
 void TS4231::ts_digitalWrite(int pin, uint8_t write_val) {
   digitalWrite(pin, write_val);
+  delayMicroseconds(1); //If digitalWrite takes less than 50ns, it can cause issues with mode selection.
   }
 
 unsigned long TS4231::ts_millis() {
