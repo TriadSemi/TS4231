@@ -9,10 +9,21 @@
 #include "ts4231.h"
 #include <Arduino.h>
 
-//IMPORTANT NOTE: If porting the TS4231 library code to a non-Arduino architecture,
-//be sure that the INPUT ports assigned to the E and D signals are configured as
-//floating inputs with NO pull-up or pull-down function.  Using a pull-up or
-//pull-down function on the inputs will cause the TS4231 to operate incorrectly.
+//IMPORTANT NOTES:
+//1)  If porting the TS4231 library code to a non-Arduino architecture,
+//    be sure that the INPUT ports assigned to the E and D signals are configured as
+//    floating inputs with NO pull-up or pull-down function.  Using a pull-up or
+//    pull-down function on the inputs will cause the TS4231 to operate incorrectly.
+//2)  The TS4231 library omits delays between E and D signal transitions when going
+//    from S3_STATE to WATCH_STATE or SLEEP_STATE to WATCH_STATE in function
+//    goToWatch() for the purpose of transitioning into WATCH_STATE as quickly as
+//    possible.  If a microcontroller is being used that can change states on
+//    the E and D outputs faster than approximately 100ns, the TS4231 datasheet
+//    must be consulted to verify timing parameters are not being violated to
+//    assure proper TS4231 operation.  A suitable solution would be to include
+//    a short delay in function ts_digitalWrite() to allow enough time between
+//    output pin signal changes to meet the TS4231 timing parameters as stated
+//    in the datasheet.  See the ts_digitalWrite() function for more information.
 
 TS4231::TS4231(int device_E_pin, int device_D_pin) {
   configured = false;
@@ -39,6 +50,10 @@ uint8_t TS4231::ts_digitalRead(int pin) {
 
 void TS4231::ts_digitalWrite(int pin, uint8_t write_val) {
   digitalWrite(pin, write_val);
+//A short delay function can be inserted here to extend the time between writes to
+//the E and D outputs if TS4231 timing parameters are being violated.  Consult
+//the TS4231 datasheet for more information on timing parameters.  It is recommended
+//that any added delay be no longer than approximately 1us.
   }
 
 unsigned long TS4231::ts_millis() {
